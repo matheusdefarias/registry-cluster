@@ -16,3 +16,11 @@
 
 	- docker build -f ./docker/workload/Dockerfile --tag localregistry.com/image1-unsigned .
 	- docker build -f ./docker/workload/Dockerfile --tag localregistry.com/image2-unsigned .
+
+5 - Copiar certificados
+    - sudo cp ./certs/domain.crt ./certs/domain.key /usr/local/share/ca-certificates/
+    - sudo update-ca-certificates --fresh
+
+6 - Assinar as imagens
+    - export COSIGN_EXPERIMENTAL=1
+    - cosign sign [image]
